@@ -59,7 +59,7 @@
             //如果还有票，继续售卖
             if (ticketCount > 0) {
                 ticketCount --;
-                NSLog(@"%@", [NSString stringWithFormat:@"剩余票数：%ld 窗口：%@", ticketCount, [NSThread currentThread].name]);
+                NSLog(@"%@", [NSString stringWithFormat:@"剩余票数：%ld 窗口：%@", (long)ticketCount, [NSThread currentThread].name]);
                 [NSThread sleepForTimeInterval:0.2];
             }
             //如果已卖完，关闭售票窗口
