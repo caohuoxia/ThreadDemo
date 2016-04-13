@@ -21,6 +21,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     ticketCount = 50;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(threadExitNotice) name:NSThreadWillExitNotification object:nil];
+    //新建两个子线程（代表两个窗口同时销售门票）
     NSThread * window1 = [[NSThread alloc]initWithTarget:self selector:@selector(thread1) object:nil];
     [window1 start];
     NSThread * window2 = [[NSThread alloc]initWithTarget:self selector:@selector(thread2) object:nil];
@@ -28,7 +29,6 @@
     
     [self performSelector:@selector(saleTicket) onThread:window1 withObject:nil waitUntilDone:NO];
     [self performSelector:@selector(saleTicket) onThread:window2 withObject:nil waitUntilDone:NO];
-//    //新建两个子线程（代表两个窗口同时销售门票）
 //    NSThread *thread_beijing = [[NSThread alloc] initWithTarget:self selector:@selector(saleTicket) object:nil];
 //    thread_beijing.name = @"北京售票窗口";
 //    [thread_beijing start];
